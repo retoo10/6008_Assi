@@ -1,0 +1,20 @@
+﻿Test,Rules,Scenario,Expected,Actual,Result
+T01,R4,"Couple, GBP 120 budget, no requests",top_type = Standard King,top_type = Standard King,PASS
+T02,R4,"Couple, GBP 120 budget, wants separate beds",top_type = Standard Twin,top_type = Standard Twin,PASS
+T03,"R8, R25","Couple wants a quiet room, GBP 130 (king should beat twin)",top_type = Standard King; top_zone = mid,top_type = Standard King; top_zone = mid,PASS
+T04,"R8, R9, R10","Quiet + short walk to lift + view, GBP 160",top_type = Deluxe King; top_zone = mid,top_type = Deluxe King; top_zone = mid,PASS
+T05,R5,"Family of 4 (2 adults, 2 children), GBP 250",top_type = Junior Suite; rooms_needed = 1,top_type = Junior Suite; rooms_needed = 1,PASS
+T06,R6,"Family of 4, GBP 180 (suite is over budget)",top_type = Family Room,top_type = Family Room,PASS
+T07,R1,"Guest needs an accessible room, GBP 130",top_type = Accessible King,top_type = Accessible King,PASS
+T08,R2,"Couple with no access needs, GBP 300 (accessible room must never be offered)",Accessible King never offered,"offered: Connecting Rooms, Deluxe King, Executive King, Family Room, Junior Suite, Standard King, Standard Twin",PASS
+T09,R7,Couple with GBP 50 budget (nothing fits),result = over_budget,result = over_budget,PASS
+T10,R14,"Member on an anniversary, GBP 120",upgrade_status = granted; upgrade_type = Deluxe King; extras include room set-up with rose petals + anniversary card,"upgrade_status = granted; upgrade_type = Deluxe King; extras: room set-up with rose petals, anniversary card",PASS
+T11,R16,"Diamond member, GBP 120",upgrade_status = granted; extras include treat + welcome card from the hotel,"upgrade_status = granted; extras: treat, welcome card from the hotel",PASS
+T12,R18,"Silver member, no occasion (no free upgrade, paid offer)",upgrade_status = paid_offer; paid_cost = 24.0,upgrade_status = paid_offer; paid_cost = 24.0,PASS
+T13,"R17, R24","Gold member, ONE upgrade room left, a Diamond member also arriving",upgrade_status = conflict,upgrade_status = conflict,PASS
+T14,R19,"Diamond member, no Deluxe rooms free at all",upgrade_status = unavailable,upgrade_status = unavailable,PASS
+T15,R20,Hotel only 45% full: Standard King should be 10% cheaper,top_type = Standard King; top_price = 103.5,top_type = Standard King; top_price = 103.5,PASS
+T16,R11,"Business traveller, GBP 200",top_type = Executive King; notes include R11,top_type = Executive King; notes: R11,PASS
+T17,R12,12 adults (needs 6 rooms): group handoff,rooms_needed = 6; plan_size = 6; notes include R12,rooms_needed = 6; plan_size = 6; notes: R12,PASS
+T18,R13,"6 adults (needs 3 rooms): standard pricing, no group handoff",rooms_needed = 3; notes include R13; notes exclude R12,rooms_needed = 3; notes: R13; notes: R13,PASS
+T19,R23,7-night stay: restock every 3 days,"notes include R23; restock message contains 'day 3, day 6'","notes: R23; long stay (7 nights): housekeeping restocks sheets and amenities every 3 days (day 3, day 6)",PASS
